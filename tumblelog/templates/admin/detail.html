@@ -13,8 +13,8 @@
   <form action="?{{ request.query_string }}" method="post">
     {{ forms.render(form) }}
     <div class="actions">
-      <input type="submit" class="btn primary" value="save">
-      <a href="{{ url_for("admin.index") }}" class="btn secondary">Cancel</a>
+      <input type="submit" class="btn btn-primary" value="save">
+      <a href="{{ url_for("admin.index") }}" class="btn btn-default">Cancel</a>
     </div>
   </form>
 {% endblock %}
