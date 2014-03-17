@@ -1,23 +1,28 @@
 {% extends "base.html" %}
 
 {%- block topbar -%}
-<div class="topbar" data-dropdown="dropdown">
-  <div class="fill">
-    <div class="container">
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
       <h2>
            <a href="{{ url_for('admin.index') }}" class="brand">My Tumblelog Admin</a>
       </h2>
-      <ul class="nav secondary-nav">
-        <li class="menu">
-           <a href="{{ url_for("admin.create") }}" class="btn primary">Create new post</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Create New <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            {% for type in ('post', 'video', 'image', 'quote') %}
+                <li><a href="{{ url_for("admin.create", type=type) }}">{{ type|title }}</a></li>
+            {% endfor %}
+          </ul>
         </li>
       </ul>
-    </div>
   </div>
 </div>
 {%- endblock -%}
 
 {% block js_footer %}
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-dropdown.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 {% endblock %}
