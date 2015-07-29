@@ -2,6 +2,10 @@ import datetime
 from flask import url_for
 from tumblelog import db
 
+class Comment(db.EmbeddedDocument):
+    created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
+    body = db.StringField(verbose_name="Comment", required=True)
+    author = db.StringField(verbose_name="Name", max_length=255, required=True)
 
 class Post(db.DynamicDocument):
     created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
@@ -42,7 +46,3 @@ class Quote(Post):
     author = db.StringField(verbose_name="Author Name", required=True, max_length=255)
 
 
-class Comment(db.EmbeddedDocument):
-    created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
-    body = db.StringField(verbose_name="Comment", required=True)
-    author = db.StringField(verbose_name="Name", max_length=255, required=True)
