@@ -10,7 +10,7 @@
     {% endif %}
   </h2>
 
-  <form action="?{{ request.query_string }}" method="post">
+  <form action="?type={{ request.args.get('type') }}" method="post">
     {{ forms.render(form) }}
     <div class="actions">
       <input type="submit" class="btn btn-primary" value="save">
